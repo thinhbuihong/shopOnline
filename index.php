@@ -61,7 +61,7 @@
 
         <!-- dang nhap -->
         <form class="form-inline ml-auto my-lg-0" id='login' method="POST" action="login.php">
-          <input class="form-control mr-sm-2" id="email" type="text" placeholder="Email@gmail.com" name="email" value="">
+          <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
           <input class="form-control mr-sm-2" id="password" type="text" placeholder="Password" name="password" value="">
           <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
           <button class="btn btn-outline-success my-2 my-sm-0" id="signup" type="">Sign up</button>

@@ -4,11 +4,11 @@
     }
 }
 /* navbar */
-#email, #password{
+#account, #password{
     width: 150px;
     padding: 0px 10px;
 }
-#email, #password, #login, #signup{
+#account, #password, #login, #signup{
     height: 30px;
     font-size: smaller;
 }
