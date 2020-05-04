@@ -1,0 +1,55 @@
+@media screen and (max-wemailth:1000px){
+    #login{
+        display: none;
+    }
+}
+/* navbar */
+#email, #password{
+    width: 150px;
+    padding: 0px 10px;
+}
+#email, #password, #login, #signup{
+    height: 30px;
+    font-size: smaller;
+}
+
+
+/* end navbar */
+
+/* content  */
+#content{
+    margin-top: 50px;
+}
+/* left content*/
+.dropdown >.dropdown-menu{
+    transition-delay: 0.2s;
+    transition-duration: 0.1s;
+    top: -20px;
+    visibility: hidden;
+    display: block;
+    left: 102%;
+}
+.dropdown:hover >.dropdown-menu{
+    visibility: visible;
+    top: 0;
+    transition-duration: 0.5s;
+    box-shadow: 1px 1px 3px blueviolet;
+}
+.dropdown:hover>a{
+    background-color: rgb(117, 128, 153);
+    color: wheat;
+}
+
+.list-group> li{
+    list-style-type: none;
+}
+
+/* end left */
+
+/* carousel */
+.carousel img{
+    width: 900px;
+    height: 420px;
+}
+
+/* product */
