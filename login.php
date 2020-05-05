@@ -10,27 +10,33 @@
         empty($_POST['password']) ){
         header("location: index.php");
     }
-    
+
     //invoke connecdb
     require_once("./connectDB.php");
     $acc = $_POST['account'];
     $pas =$_POST['password'];
     
-    $query = "SELECT * FROM Account WHERE account='$acc';";
+    $query = "SELECT * FROM Account WHERE account='$acc' AND password='$pas';";
     $result = $conn->query($query);
-    print_r($_POST['password']);
-    // echo $acc;
-    echo $pas;
-    // if ($result->num_rows > 0) {
-    //     $row = $result->fetch_assoc();
-    //     if($row["password"] === $pass){
-    //         echo "admin";
-    //     }else{
-    //         echo "fail";
-    //     }
-    // }else{
-    //     printf("Query failed: %s\n", $conn->error);
-    // }
+    // print_r($_POST['password']);
+
+    if ($result->num_rows > 0) {
+        //logged in successfully
+        // check permission
+        $row = $result->fetch_assoc();
+        $_SESSION['accountID'] = $row['accountID'];
+        $_SESSION['role'] = $row['role'];
+        //admin
+        if($row['role'] == 1){
+            header('location: admin.php');
+        }else{
+            //guest
+            header('location: index.php');
+        }
+    }else{
+        // loggin failed
+        echo "sai ten dang nhap hoac mat khau";
+    }
     // print_r($result);
 
 ?>
