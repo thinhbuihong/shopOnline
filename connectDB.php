@@ -3,7 +3,7 @@
     $servername="localhost";
     $username ="root";
     $pass="";
-    $DBname="ShopOnline";
+    $DBname="shopOnline";
     $port="3306";
 
     //create connection
