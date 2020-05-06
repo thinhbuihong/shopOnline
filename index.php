@@ -20,8 +20,8 @@ if (isset($_SESSION['role'])) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- my css    -->
-  <link rel="stylesheet" href="style.css">
-  <script src='./myjavascript.js'></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src='./js/myjavascript.js'></script>
 </head>
 <!-- body------------------------------------------------------------------------------------------------------------------ -->
 
@@ -64,14 +64,14 @@ if (isset($_SESSION['role'])) {
           <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
           <input class="form-control mr-sm-2" id="password" type="text" placeholder="Password" name="password" value="">
           <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
-          <button class="btn btn-outline-success my-2 my-sm-0" id="signup" type="">Sign up</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" id="signup"><a href="signUp.php" class="text-decoration-none">Sign up</a></button>
         </form>
 
         <!-- hien thi cho admin  -->
         <div class="nav-item ml-auto text-light d-none
         <?php if($_SESSION['role'] == 1) echo "d-flex"; ?>
         ">
-          <h5 class='d-inline'><a href="./admin.php">Admin</a></h5>
+          <h5 class='d-inline'><a href="./admin/admin.php" class="text-decoration-none">Admin</a></h5>
           <button class='btn btn-success btn-sm p-0 ml-3'>
             <a class="nav-link m-0 py-0" href="logout.php">logout</a>
           </button>

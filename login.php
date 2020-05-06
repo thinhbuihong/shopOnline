@@ -29,7 +29,7 @@
         $_SESSION['account'] = $row['account'];
         //admin
         if($row['role'] == 1){
-            header('location: admin.php');
+            header('location: ./admin/admin.php');
         }else{
             //guest
             header('location: index.php');

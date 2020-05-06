@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['role'] != 1 && $_SESSION['accountID'] != 1) {
-    header('location: index.php');
+    header('location: ../index.php');
 }
 require_once('./connectDB.php');
 
@@ -9,7 +9,7 @@ require_once('./connectDB.php');
 $uploadOk = 0;
 $target_file ="";
 if($_SERVER['REQUEST_METHOD'] === 'POST' && is_uploaded_file($_FILES['productImg']['tmp_name'])){
-    $target_dir = "./images/product/";
+    $target_dir = "../images/product/";
     $target_file = $target_dir . basename($_FILES["productImg"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -52,7 +52,7 @@ if ($uploadOk == 1 ){
     $importprice = $_POST['productImportPrice'];
     $price= $_POST['productPrice'];
     $cate= $_POST['categoryID'];
-    $img = $target_file;
+    $img = substr($target_file,1);
     $pieces =  $_POST['pieces'];
 
     //viet query
@@ -99,8 +99,8 @@ if ($uploadOk == 1 ){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./style.css">
-    <script src='./myjavascript.js'></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src='../js/myjavascript.js'></script>
 </head>
 
 <body>
@@ -108,8 +108,8 @@ if ($uploadOk == 1 ){
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-0">
         <div class="container px-0">
             <!-- logo -->
-            <a class="navbar-brand" href="index.php">
-                <img src="./images/logo/logo.png" alt="logo ATN" class='d-inline-block' height='40px' width='65px'>
+            <a class="navbar-brand" href="../index.php">
+                <img src="../images/logo/logo.png" alt="logo ATN" class='d-inline-block' height='40px' width='65px'>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -117,7 +117,7 @@ if ($uploadOk == 1 ){
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -136,9 +136,9 @@ if ($uploadOk == 1 ){
                 </ul>
 
                 <div class="nav-item ml-auto text-light d-flex">
-                    <h5 class='d-inline'><a href="./admin.php">Admin</a></h5>
+                    <h5 class='d-inline text-decoration-none'><a href="./admin.php">Admin</a></h5>
                     <button class='btn btn-success btn-sm p-0 ml-3'>
-                        <a class="nav-link m-0 py-0" href="logout.php">logout</a>
+                        <a class="nav-link m-0 py-0" href="../logout.php">logout</a>
                     </button>
                 </div>
 
