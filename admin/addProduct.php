@@ -7,16 +7,17 @@ require_once('./connectDB.php');
 
 //xu ly img
 $uploadOk = 0;
-$target_file ="";
-if($_SERVER['REQUEST_METHOD'] === 'POST' && is_uploaded_file($_FILES['productImg']['tmp_name'])){
+$target_file = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_uploaded_file($_FILES['productImg']['tmp_name'])) {
     $target_dir = "../images/product/";
     $target_file = $target_dir . basename($_FILES["productImg"]["name"]);
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) {
         $check = getimagesize($_FILES["productImg"]["tmp_name"]);
-        if($check !== false) {
+        if ($check !== false) {
             $uploadOk = 1;
         } else {
             $uploadOk = 0;
@@ -32,27 +33,28 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && is_uploaded_file($_FILES['productImg
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "<script>alert('Sorry, your file was not uploaded.')</script>";
-    // if everything is ok, try to upload file
-    } else {
-        
     }
-
 }
-if($_SERVER['REQUEST_METHOD'] === 'POST' &&
-    !is_uploaded_file($_FILES['productImg']['tmp_name'])){
-        echo "<script>alert('no file upload')</script>";
-    }
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
+    !is_uploaded_file($_FILES['productImg']['tmp_name'])
+) {
+
+    echo "<script>alert('no file upload')</script>";
+}
+
+
 
 // end xu ly img 
 
-if ($uploadOk == 1 ){
-    $name =$_POST['productName'] ;
-    $des =$_POST['productDescription'];
-    $ava= $_POST['productAvailable'];
+if ($uploadOk == 1) {
+    $name = $_POST['productName'];
+    $des = $_POST['productDescription'];
+    $ava = $_POST['productAvailable'];
     $importprice = $_POST['productImportPrice'];
-    $price= $_POST['productPrice'];
-    $cate= $_POST['categoryID'];
-    $img = substr($target_file,1);
+    $price = $_POST['productPrice'];
+    $cate = $_POST['categoryID'];
+    $img = substr($target_file, 1);
     $pieces =  $_POST['pieces'];
 
     //viet query
@@ -81,7 +83,6 @@ if ($uploadOk == 1 ){
         unset($_POST);
         header('location: addProduct.php');
     }
-
 }
 
 
@@ -153,27 +154,27 @@ if ($uploadOk == 1 ){
         <form action="addProduct.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Product name *</label>
-                <input type="text" class="form-control" name="productName" placeholder="product's name" >
+                <input type="text" class="form-control" name="productName" placeholder="product's name">
             </div>
             <div class="form-group">
                 <label for="available">Product available *</label>
-                <input type="text" class="form-control" name="productAvailable" placeholder="product available" >
+                <input type="text" class="form-control" name="productAvailable" placeholder="product available">
             </div>
             <div class="form-group">
                 <label for="importPrice">Product import price *</label>
-                <input type="text" class="form-control" name="productImportPrice" placeholder="product import price" >
+                <input type="text" class="form-control" name="productImportPrice" placeholder="product import price">
             </div>
             <div class="form-group">
                 <label for="price">Product price *</label>
-                <input type="text" class="form-control" name="productPrice" placeholder="product price" >
+                <input type="text" class="form-control" name="productPrice" placeholder="product price">
             </div>
             <div class="form-group">
                 <label for="pieces">Product pieces *</label>
-                <input type="text" class="form-control" name="pieces" placeholder="product pieces" >
+                <input type="text" class="form-control" name="pieces" placeholder="product pieces">
             </div>
             <div class="form-group">
                 <label for="description">Product description</label>
-                <input type="text" class="form-control" name="productDescription" placeholder="product description" >
+                <input type="text" class="form-control" name="productDescription" placeholder="product description">
             </div>
 
             <div class="form-group">
@@ -194,7 +195,7 @@ if ($uploadOk == 1 ){
 
             <div class="form-group">
                 <label for="image">Product image *: </label>
-                <input type="file" class="" name="productImg" >
+                <input type="file" class="" name="productImg">
             </div>
 
 

@@ -1,6 +1,6 @@
-let showProduct = (category="")=>{
+let showProduct = (category="all")=>{
     var xhtttp = new XMLHttpRequest();
-    xhtttp.open('get','getProduct.php',true);
+    xhtttp.open('get','getProduct.php?cate='+category,true);
     
     xhtttp.onreadystatechange = function(){
         if(xhtttp.readyState == 4 && xhtttp.status ==200){

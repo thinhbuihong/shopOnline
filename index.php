@@ -50,8 +50,9 @@ if (isset($_SESSION['role'])) {
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          <!-- cart  -->
           <li class="nav-item ml-2">
-            <a href="" class="">
+            <a href="cart.php" class="">
               <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" id="cart-icon"></i>
             </a>
           </li>
@@ -69,7 +70,7 @@ if (isset($_SESSION['role'])) {
 
         <!-- hien thi cho admin  -->
         <div class="nav-item ml-auto text-light d-none
-        <?php if($_SESSION['role'] == 1) echo "d-flex"; ?>
+        <?php if ($_SESSION['role'] == 1) echo "d-flex"; ?>
         ">
           <h5 class='d-inline'><a href="./admin/admin.php" class="text-decoration-none">Admin</a></h5>
           <button class='btn btn-success btn-sm p-0 ml-3'>
@@ -79,17 +80,17 @@ if (isset($_SESSION['role'])) {
 
         <!-- hien thi guest  -->
         <div class="nav-item ml-auto text-light d-none
-        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 0) echo "d-flex"; ?>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 0) echo "d-flex"; ?>
           ">
-          <h3 class='d-inline'><?php 
-            if(isset($_SESSION['role']) && $_SESSION['role'] == 0)
-            echo '<h5>'.$_SESSION['account'].'</h5>';
-          ?></h3>
+          <h3 class='d-inline'><?php
+                                if (isset($_SESSION['role']) && $_SESSION['role'] == 0)
+                                  echo '<h5>' . $_SESSION['account'] . '</h5>';
+                                ?></h3>
           <button class='btn btn-success btn-sm p-0 ml-3'>
             <a class="nav-link m-0 py-0" href="logout.php">logout</a>
           </button>
         </div>
-        
+
 
 
       </div>
@@ -103,47 +104,19 @@ if (isset($_SESSION['role'])) {
     <div class="row">
       <!-- left -->
       <div class="col-lg-3">
+        <div class="list-group mt-5">
+          <button class='list-group-item list-group-item-action list-group-item-warning' onclick="showProduct()">All
+           </button>
+          <?php 
+            require_once('./connectDB.php');
+            $categories = $conn->query("SELECT * FROM category");
 
-        <!-- <h1 class="my-4">Thinh dep trai</h1> -->
-        <div class="list-group ">
-          <!-- brand  -->
-          <li class="dropdown">
-            <a href="#" class="list-group-item " id="brand">Brand</a>
-            <div class="dropdown-menu">
-              <a href="" class="dropdown-item">Dell</a>
-              <a href="" class="dropdown-item">HP</a>
-              <a href="" class="dropdown-item">Lenovo</a>
-              <a href="" class="dropdown-item">Macbook</a>
-              <a href="" class="dropdown-item">Microsoft</a>
-            </div>
-          </li>
-          <!-- operating system  -->
-          <li class="dropdown">
-            <a href="#" class="list-group-item " id="brand">Operating System</a>
-            <div class="dropdown-menu">
-              <a href="" class="dropdown-item">Windows</a>
-              <a href="" class="dropdown-item">Mac OS</a>
-              <a href="" class="dropdown-item">Linux</a>
-              <a href="" class="dropdown-item">Macbook</a>
-            </div>
-          </li>
-          <!-- compuer processor type  -->
-          <li class="dropdown">
-            <a href="#" class="list-group-item " id="brand">Computer Processor Type</a>
-            <div class="dropdown-menu">
-              <a href="" class="dropdown-item">Intel Core i5</a>
-              <a href="" class="dropdown-item">Interl Core i3</a>
-              <a href="" class="dropdown-item">Intel Core i7</a>
-              <a href="" class="dropdown-item">Intel Celeron</a>
-              <a href="" class="dropdown-item">Intel celeron</a>
-              <a href="" class="dropdown-item">AMD A-Series</a>
-              <a href="" class="dropdown-item">Intel Pentium</a>
-            </div>
-          </li>
-
+            while($row = $categories->fetch_object()){
+              echo "<button class='list-group-item list-group-item-action list-group-item-warning' onclick=\"showProduct('$row->categoryID')\">$row->categoryName</button>";
+            }
+          ?>
+          
         </div>
-        <!-- end lis group  -->
-        <!-- ads  -->
         <div class="container-fluid" id="ads">
           <img class="img-fluid mt-3" src="./images/images.png" alt="ads">
           <img class="img-fluid mt-3" src="./images/images.png" alt="ads">
@@ -201,7 +174,7 @@ if (isset($_SESSION['role'])) {
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Thinh Dep Zai</p>
       </div>
     </footer>
 

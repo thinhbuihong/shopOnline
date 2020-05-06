@@ -82,6 +82,7 @@
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
         <th scope="col">gender</th>
+        <th scope="col">Account ID</th>
         <th scope="col">#</th>
         <th scope="col">#</th></tr>';
     echo '</thead><tbody>';
