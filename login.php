@@ -26,6 +26,7 @@
         $row = $result->fetch_assoc();
         $_SESSION['accountID'] = $row['accountID'];
         $_SESSION['role'] = $row['role'];
+        $_SESSION['account'] = $row['account'];
         //admin
         if($row['role'] == 1){
             header('location: admin.php');
@@ -38,5 +39,3 @@
         echo "sai ten dang nhap hoac mat khau";
     }
     // print_r($result);
-
-?>

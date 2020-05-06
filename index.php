@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+$disable = '';
+if (isset($_SESSION['role'])) {
+  $disable = 'd-none';
+}
 ?>
 
 <!doctype html>
@@ -55,12 +58,40 @@ session_start();
         </ul>
 
         <!-- dang nhap -->
-        <form class="form-inline ml-auto my-lg-0" id='login' method="POST" action="login.php">
+        <form class="form-inline ml-auto my-lg-0 
+        <?php if (!empty($disable)) echo $disable; ?>
+        " id='login' method="POST" action="login.php">
           <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
           <input class="form-control mr-sm-2" id="password" type="text" placeholder="Password" name="password" value="">
           <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
           <button class="btn btn-outline-success my-2 my-sm-0" id="signup" type="">Sign up</button>
         </form>
+
+        <!-- hien thi cho admin  -->
+        <div class="nav-item ml-auto text-light d-none
+        <?php if($_SESSION['role'] == 1) echo "d-flex"; ?>
+        ">
+          <h5 class='d-inline'><a href="./admin.php">Admin</a></h5>
+          <button class='btn btn-success btn-sm p-0 ml-3'>
+            <a class="nav-link m-0 py-0" href="logout.php">logout</a>
+          </button>
+        </div>
+
+        <!-- hien thi guest  -->
+        <div class="nav-item ml-auto text-light d-none
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 0) echo "d-flex"; ?>
+          ">
+          <h3 class='d-inline'><?php 
+            if(isset($_SESSION['role']) && $_SESSION['role'] == 0)
+            echo '<h5>'.$_SESSION['account'].'</h5>';
+          ?></h3>
+          <button class='btn btn-success btn-sm p-0 ml-3'>
+            <a class="nav-link m-0 py-0" href="logout.php">logout</a>
+          </button>
+        </div>
+        
+
+
       </div>
     </div>
   </nav>

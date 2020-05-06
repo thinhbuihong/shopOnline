@@ -23,7 +23,7 @@ if ($_SESSION['role'] != 1 && $_SESSION['accountID'] != 1) {
     <script src='./myjavascript.js'></script>
 </head>
 
-<body onload='management("Product")'>
+<body onload='management("product")'>
     <!-- begin nav  -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-0">
         <div class="container px-0">
@@ -56,9 +56,9 @@ if ($_SESSION['role'] != 1 && $_SESSION['accountID'] != 1) {
                 </ul>
 
                 <div class="nav-item ml-auto text-light d-flex">
-                    <h3 class='d-inline'>Admin</h3>
+                    <h5 class='d-inline'><a href="./admin.php">Admin</a></h5>
                     <button class='btn btn-success btn-sm p-0 ml-3'>
-                        <a class="nav-link m-0 py-0" href="#">logout</a>
+                        <a class="nav-link m-0 py-0" href="logout.php">logout</a>
                     </button>
                 </div>
 
@@ -75,10 +75,10 @@ if ($_SESSION['role'] != 1 && $_SESSION['accountID'] != 1) {
             <!-- left -->
             <div class="col-lg-3">
                 <div class="list-group ">
-                    <a class='list-group-item list-group-item-action list-group-item-warning' href="#">Product Management</a>
-                    <a class='list-group-item list-group-item-action list-group-item-warning' href="#">Customer management</a>
-                    <a class='list-group-item list-group-item-action list-group-item-warning' href="#">Order management</a>
-                    <a class='list-group-item list-group-item-action list-group-item-warning' href="#">category management</a>
+                    <button class='list-group-item list-group-item-action list-group-item-warning'  onclick="management('product')">Product Management</button>
+                    <button class='list-group-item list-group-item-action list-group-item-warning'  onclick="management('category')">Category management</button>
+                    <button class='list-group-item list-group-item-action list-group-item-warning'  onclick="management('customer')">Customer management</button>
+                    <button class='list-group-item list-group-item-action list-group-item-warning'  onclick="management('orderdetail')">Order management</button>
                 </div>
                 <!-- end lis group  -->
             </div>
