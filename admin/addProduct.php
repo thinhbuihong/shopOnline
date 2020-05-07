@@ -46,6 +46,16 @@ if (
 
 
 // end xu ly img 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
+    (empty($_POST['productName']) ||
+    empty($_POST['productDescription']) ||
+    empty($_POST['productAvailable']) ||
+    empty($_POST['productImportPrice']) ||
+    empty($_POST['productPrice']) ||
+    empty($_POST['categoryID']) ||
+    empty($_POST['pieces']))){
+        echo "<script type='text/javascript'>alert('Please provide full information'); </script>";
+    }
 
 if ($uploadOk == 1) {
     $name = $_POST['productName'];

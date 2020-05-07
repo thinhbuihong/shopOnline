@@ -28,6 +28,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['categoryName'])){
         header('location: addCategory.php');
     }
 }
+if($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST['categoryName'])){
+    echo "<script type='text/javascript'>alert('Please provide full information'); </script>";
+}
 ?>
 
 
@@ -36,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['categoryName'])){
 <html lang="en">
 
 <head>
-    <title>add product</title>
+    <title>add category</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['categoryName'])){
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>

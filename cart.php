@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
-    echo "<script>alert('asd')</script>";
-    header('location: ./index.php');
-}
+// if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
+//     echo "<script>alert('asd')</script>";
+//     // header('location: ./index.php');
+// }
 
 // var_dump($_SESSION['cart']);
 
@@ -67,8 +67,8 @@ if (isset($_SESSION['role'])) {
 
                 <!-- dang nhap -->
                 <form class="form-inline ml-auto my-lg-0 
-        <?php if (!empty($disable)) echo $disable; ?>
-        " id='login' method="POST" action="login.php">
+                <?php if (!empty($disable)) echo $disable; ?>
+                " id='login' method="POST" action="login.php">
                     <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
                     <input class="form-control mr-sm-2" id="password" type="text" placeholder="Password" name="password" value="">
                     <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
@@ -77,8 +77,8 @@ if (isset($_SESSION['role'])) {
 
                 <!-- hien thi cho admin  -->
                 <div class="nav-item ml-auto text-light d-none
-        <?php if ($_SESSION['role'] == 1) echo "d-flex"; ?>
-        ">
+                <?php if ($_SESSION['role'] == 1) echo "d-flex"; ?>
+                ">
                     <h5 class='d-inline'><a href="./admin/admin.php" class="text-decoration-none">Admin</a></h5>
                     <button class='btn btn-success btn-sm p-0 ml-3'>
                         <a class="nav-link m-0 py-0" href="logout.php">logout</a>
@@ -87,8 +87,8 @@ if (isset($_SESSION['role'])) {
 
                 <!-- hien thi guest  -->
                 <div class="nav-item ml-auto text-light d-none
-        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 0) echo "d-flex"; ?>
-          ">
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 0) echo "d-flex"; ?>
+                ">
                     <h3 class='d-inline'><?php
                                             if (isset($_SESSION['role']) && $_SESSION['role'] == 0)
                                                 echo '<h5>' . $_SESSION['account'] . '</h5>';

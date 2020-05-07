@@ -5,10 +5,13 @@
     // echo $_POST['email'];
     // print_r($_POST['email']);
     // check empty email and password
-    if($_SERVER['REQUEST_METHOD'] !== 'POST' || 
-        empty($_POST['account']) || 
-        empty($_POST['password']) ){
+    if($_SERVER['REQUEST_METHOD'] !== 'POST' ){
         header("location: index.php");
+    }
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && 
+        (empty($_POST['account']) || 
+        empty($_POST['password'])) ){
+        echo "<script type='text/javascript'>alert('Please provide full information'); window.location='./index.php'</script>";
     }
 
     //invoke connecdb
@@ -32,10 +35,10 @@
             header('location: ./admin/admin.php');
         }else{
             //guest
-            header('location: index.php');
+            header('location: ./index.php');
         }
     }else{
         // loggin failed
-        echo "sai ten dang nhap hoac mat khau";
+        echo "<script type='text/javascript'>alert('wrong username or password'); window.location='./index.php'</script>";
     }
     // print_r($result);

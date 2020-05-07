@@ -39,10 +39,25 @@
         ('$name', '$address', '$email', '$phone', '$gender', '$accountID')";
         
         if($conn->query($addCus)){
-            echo "<script>alert('add successfuly')</script>";
-
+            // echo "<script>alert('add successfuly')</script>";
+            echo "<script type='text/javascript'>alert('successfuly'); window.location='./index.php'</script>";
         }
     }
+    if($_SERVER['REQUEST_METHOD'] === 'POST' &&
+    (empty($_POST['customerName']) ||
+    empty($_POST['account']) ||
+    empty($_POST['customerEmail']) ||
+    empty($_POST['password']) ||
+    empty($_POST['customerAddress']) ||
+    empty($_POST['customerPhone']) ||
+    empty($_POST['customerGender'])) ){
+
+        echo "<script type='text/javascript'>alert('Please provide full information');</script>";;
+    }
+    
+    
+    
+    
 
     
 ?>
