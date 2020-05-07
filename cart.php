@@ -1,11 +1,9 @@
 <?php
 session_start();
-// if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
-//     echo "<script>alert('asd')</script>";
-//     // header('location: ./index.php');
+// if($_SESSION['order'] == 1){
+//     unset($_SESSION['cart']);
+//     $_SESSION['order'] == 0;
 // }
-
-// var_dump($_SESSION['cart']);
 
 $disable = '';
 if (isset($_SESSION['role'])) {

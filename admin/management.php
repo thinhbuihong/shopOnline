@@ -103,7 +103,13 @@
 
     //order
     if($table == 'orderdetail'){
-    $query = "SELECT * FROM $table";
+    // $query = "SELECT * FROM $table";
+    $query = "SELECT t1.orderDetailsID, t3.customerName, t1.productID, t1.productQuatity
+    FROM orderdetail AS t1 INNER JOIN orders AS t2 
+    ON t1.orderID = t2.orderID 
+    INNER JOIN customer as t3 
+    on t2.customerID = t3.customerID";
+
     $result = $conn->query($query);
 
     echo '<h4 class="d-inline mr-2">Order</h4> ';
@@ -111,7 +117,7 @@
     echo '<table class="table table-hover table-sm mt-2">';
     echo '<thead class="thead-dark">';
     echo '<tr><th scope="col">#</th>
-        <th scope="col">Order ID</th>
+        <th scope="col">Customer Name</th>
         <th scope="col">Product ID</th>
         <th scope="col">Product quatity</th>';
     echo '</thead><tbody>';

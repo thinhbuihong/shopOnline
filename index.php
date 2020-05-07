@@ -1,6 +1,6 @@
 <?php
 session_start();
-// $_SESSION['cart'] = [];
+// $_SESSION['order'] = 0;
 $disable = '';
 if (isset($_SESSION['role'])) {
   $disable = 'd-none';
@@ -52,7 +52,7 @@ if (isset($_SESSION['role'])) {
             <a class="nav-link" href="#">Contact</a>
           </li>
           <!-- cart  -->
-          <li class="nav-item ml-2">
+          <li class="nav-item ml-2 <?php if($_SESSION['role'] == 1){ echo "d-none";} ?>">
             <a href="cart.php" class="">
               <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" id="cart-icon"></i>
             </a>
@@ -66,7 +66,7 @@ if (isset($_SESSION['role'])) {
           <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
           <input class="form-control mr-sm-2" id="password" type="password" placeholder="Password" name="password" value="">
           <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
-          <button class="btn btn-outline-success my-2 my-sm-0" id="signup"><a href="signUp.php" class="text-decoration-none">Sign up</a></button>
+          <button class="btn btn-outline-success my-2 my-sm-0" id="signup"><a href="./signUp.php" class="text-decoration-none">Sign up</a></button>
         </form>
 
         <!-- hien thi cho admin  -->
