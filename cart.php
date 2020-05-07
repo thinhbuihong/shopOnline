@@ -1,8 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
+    echo "<script>alert('asd')</script>";
     header('location: ./index.php');
 }
+
+// var_dump($_SESSION['cart']);
 
 $disable = '';
 if (isset($_SESSION['role'])) {
@@ -124,21 +127,31 @@ if (isset($_SESSION['role'])) {
                 if (!empty($_SESSION['cart'])) {
                     $cart = $_SESSION['cart'];
                     require_once('./connectDB.php');
-                    foreach ($cart as $key->$pro) {
+                    $i = 1;
+                    $total = 0;
+                    $items = 0;
+                    foreach ($cart as $id => $quality) {
                         // $pro{0=>id, 1=>quality}
-                        $id = $pro[0];
-                        $quality = $pro[1];
                         //get product from database
                         $p = $conn->query("SELECT * FROM product WHERE productID='$id'");
                         $p = $p->fetch_object();
 
-                        echo "<tr><td>$key</td>
+                        echo "<tr><td>$i</td>
                               <td>$p->productName</td>
-                              <td>$p->productPrice</td>
+                              <td>$p->productPrice $</td>
                               <td>$quality</td>
-                              <td><button><a href=\"deleteItemCart.php?id=$id\">delete</a></button></td>
+                              <td><button><a class=\"text-decoration-none text-dark\" href=\"deleteItemCart.php?id=$id\">delete</a></button></td>
                               </tr>";
+
+                        $items += $quality;
+                        $total += $quality * $p->productPrice;
+                        $i += 1;
                     }
+                    // total price 
+                    echo "<tr><td></td><td></td>
+                        <td>$total $</td>
+                        <td>$items items</td>
+                        <td><button><a class=\"text-decoration-none text-success\" href=\"order.php\">Buy</a></button></td></tr>";
                 }
                 ?>
             </tbody>

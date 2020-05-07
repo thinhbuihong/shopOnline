@@ -1,5 +1,6 @@
 <?php
 session_start();
+// $_SESSION['cart'] = [];
 $disable = '';
 if (isset($_SESSION['role'])) {
   $disable = 'd-none';

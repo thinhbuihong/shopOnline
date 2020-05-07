@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['role'] != 1 && $_SESSION['accountID'] != 1) {
-    header('location: index.php');
+    header('location: ../index.php');
 }
 
 
