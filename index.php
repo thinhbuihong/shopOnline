@@ -62,7 +62,7 @@ if (isset($_SESSION['role'])) {
         <!-- dang nhap -->
         <form class="form-inline ml-auto my-lg-0 
         <?php if (!empty($disable)) echo $disable; ?>
-        " id='login' method="POST" action="login.php">
+        " id='loginForm' method="POST" action="login.php">
           <input class="form-control mr-sm-2" id="account" type="text" placeholder="Account" name="account" value="">
           <input class="form-control mr-sm-2" id="password" type="password" placeholder="Password" name="password" value="">
           <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" id="login" type="submit">Log in</button>
@@ -105,7 +105,9 @@ if (isset($_SESSION['role'])) {
     <div class="row">
       <!-- left -->
       <div class="col-lg-3">
-        <div class="list-group mt-5">
+        <button class="collapse-toggle d-block d-md-none btn btn-outline-warning w-100"
+        data-toggle="collapse" data-target="#drop">Filter</button>
+        <div class="list-group mt-5 collapse d-md-block" id="drop">
           <button class='list-group-item list-group-item-action list-group-item-warning' onclick="showProduct()">All
            </button>
           <?php 
@@ -118,7 +120,7 @@ if (isset($_SESSION['role'])) {
           ?>
           
         </div>
-        <div class="container-fluid" id="ads">
+        <div class="container-fluid d-none d-lg-block" id="ads">
           <img class="img-fluid mt-3" src="./images/images.png" alt="ads">
           <img class="img-fluid mt-3" src="./images/images.png" alt="ads">
         </div>
@@ -128,7 +130,7 @@ if (isset($_SESSION['role'])) {
       <!-- right  -->
       <div class="col-lg-9">
         <!-- carousel  -->
-        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide my-4 d-none d-md-block" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

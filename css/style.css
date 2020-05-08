@@ -1,5 +1,5 @@
 @media screen and (max-wemailth:1000px){
-    #login{
+    #loginForm{
         display: none;
     }
 }
